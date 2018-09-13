@@ -42,7 +42,7 @@ func MakeRequest(speedTest SpeedTest) {
 	myval := []interface{}{speedTest.Time, speedTest.Up, speedTest.Down, speedTest.Server.Name}
 	vr.Values = append(vr.Values, myval)
 
-	_, err = srv.Spreadsheets.Values.Update(spreadsheetId, writeRange, &vr).ValueInputOption("USER_ENTERED").Do()
+	_, err = srv.Spreadsheets.Values.Append(spreadsheetId, writeRange, &vr).ValueInputOption("USER_ENTERED").Do()
 	if err != nil {
 		log.Fatalf("Unable to retrieve data from sheet. %v", err)
 	}
