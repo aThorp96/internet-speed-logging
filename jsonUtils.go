@@ -36,8 +36,8 @@ func initSpeed() SpeedTest {
 	//Verify input
 	fmt.Printf("Upload speed   : %f\n", speedTest.Up)
 	fmt.Printf("Download speed : %f\n", speedTest.Down)
-	fmt.Println("Server        : " + speedTest.Server.Name)
-	fmt.Println("Timestamp     : " + speedTest.Time)
+	fmt.Println("Server         : " + speedTest.Server.Name)
+	fmt.Println("Timestamp      : " + speedTest.Time)
 
 	defer jsonFile.Close()
 	return speedTest
