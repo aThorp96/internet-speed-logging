@@ -15,14 +15,14 @@ import (
 )
 
 func MakeRequest(speedTest SpeedTest) {
-	b, err := ioutil.ReadFile("credentials.json")
+	b, err := ioutil.ReadFile("./resources/credentials.json")
 	if err != nil {
 		log.Fatalf("Unable to read client secret file: %v", err)
 	}
 
 	// If modifying these scopes, delete your previously saved credentials
 	// at ~/.credentials/sheets.googleapis.com-go-quickstart.json
-	config, err := google.ConfigFromJSON(b, "https:www.googleapis.com/auth/spreadsheets.readwrite")
+	config, err := google.ConfigFromJSON(b, "https://www.googleapis.com/auth/spreadsheets")
 	if err != nil {
 		log.Fatalf("Unable to parse client secret file to config: %v", err)
 	}
@@ -50,7 +50,7 @@ func MakeRequest(speedTest SpeedTest) {
 }
 
 func getClient(config *oauth2.Config) *http.Client {
-	tokFile := "token.json"
+	tokFile := "./resources/token.json"
 	tok, err := tokenFromFile(tokFile)
 	if err != nil {
 		tok = getTokenFromWeb(config)

@@ -1,3 +1,3 @@
 #!/bin/bash
-speedtest --json > speed.json
+speedtest --json > ./resources/speed.json
 

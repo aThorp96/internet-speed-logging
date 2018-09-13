@@ -22,7 +22,7 @@ type Server struct {
 // Initializes the speedTest struct
 func initSpeed() SpeedTest {
 
-	speedPath := "speed.json"
+	speedPath := "./resources/speed.json"
 	jsonFile, err := os.Open(speedPath)
 	if err != nil {
 		fmt.Println(err)
