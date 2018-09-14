@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
-	//"os"
 )
 
 // For unpacking speedtest json

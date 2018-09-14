@@ -33,16 +33,27 @@ func MakeRequest(speedTest SpeedTest) {
 		log.Fatalf("Unable to retrieve Sheets Client %v", err)
 	}
 
-	spreadsheetId := "1C7ZgtjrDqrnJ0jYD7iZTdf0i5dpdgmg_fwVvMhpTQx0"
+	// Read spreadsheet ID from file
+	spreadsheetPath := "./resources/sheetID"
+	spreadsheetFile, err := os.Open(spreadsheetPath)
+	if err != nil {
+		log.Fatal("Unable to retrieve spreadsheet ID\n")
+	}
+	spreadsheetId, err := ioutil.ReadAll(spreadsheetFile)
+
+	// Remove null character EOF
+	spreadsheetId = spreadsheetId[:len(spreadsheetId)-1]
 
 	writeRange := "A1"
 
 	var vr sheets.ValueRange
 
+	// Define write order
 	myval := []interface{}{speedTest.Time, speedTest.Up, speedTest.Down, speedTest.Server.Name}
 	vr.Values = append(vr.Values, myval)
 
-	_, err = srv.Spreadsheets.Values.Append(spreadsheetId, writeRange, &vr).ValueInputOption("USER_ENTERED").Do()
+	// Send PUT request
+	_, err = srv.Spreadsheets.Values.Append(string(spreadsheetId), writeRange, &vr).ValueInputOption("USER_ENTERED").Do()
 	if err != nil {
 		log.Fatalf("Unable to retrieve data from sheet. %v", err)
 	}
