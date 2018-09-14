@@ -3,8 +3,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
-	"os"
+	//"os"
 )
 
 // For unpacking speedtest json
@@ -20,17 +21,11 @@ type Server struct {
 }
 
 // Initializes the speedTest struct
-func initSpeed() SpeedTest {
-
-	speedPath := "./resources/speed.json"
-	jsonFile, err := os.Open(speedPath)
-	if err != nil {
-		fmt.Println(err)
-	}
+func initSpeed(stdout io.ReadCloser) SpeedTest {
 
 	var speedTest SpeedTest
 
-	bytes, _ := ioutil.ReadAll(jsonFile)
+	bytes, _ := ioutil.ReadAll(stdout)
 	json.Unmarshal(bytes, &speedTest)
 
 	//Verify input
@@ -39,7 +34,6 @@ func initSpeed() SpeedTest {
 	fmt.Println("Server         : " + speedTest.Server.Name)
 	fmt.Println("Timestamp      : " + speedTest.Time)
 
-	defer jsonFile.Close()
 	return speedTest
 }
 

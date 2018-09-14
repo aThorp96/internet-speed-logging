@@ -9,13 +9,20 @@ import (
 func main() {
 
 	// Run speed test
-	cmd := exec.Command("/bin/bash", "run.sh")
-	err := cmd.Run()
+	cmd := exec.Command("/usr/bin/speedtest", "--json")
+	// Capture ouptut
+	output, err := cmd.StdoutPipe()
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	speedTest := initSpeed()
+	err = cmd.Start()
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	speedTest := initSpeed(output)
+
 	MakeRequest(speedTest)
 
 }
