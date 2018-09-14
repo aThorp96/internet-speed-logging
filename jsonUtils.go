@@ -35,6 +35,3 @@ func initSpeed(stdout io.ReadCloser) SpeedTest {
 
 	return speedTest
 }
-
-type State struct {
-}
