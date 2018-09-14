@@ -1,0 +1,6 @@
+[Unit]
+Description=Logs internet speed data to google sheet
+
+[Service]
+Type=oneshot
+ExecStart=<GOPATH>/bin/internet-speed-logging
