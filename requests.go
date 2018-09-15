@@ -14,8 +14,14 @@ import (
 	"google.golang.org/api/sheets/v4"
 )
 
+// Resources path
+// If running on a shceduler, change
+// string to "/etc/speedLog/"
+var resourcePath string = "./resources/"
+
 func MakeRequest(speedTest SpeedTest) {
-	b, err := ioutil.ReadFile("./resources/credentials.json")
+
+	b, err := ioutil.ReadFile(resourcePath + "credentials.json")
 	if err != nil {
 		log.Fatalf("Unable to read client secret file: %v", err)
 	}
@@ -34,7 +40,7 @@ func MakeRequest(speedTest SpeedTest) {
 	}
 
 	// Read spreadsheet ID from file
-	spreadsheetPath := "./resources/sheetID"
+	spreadsheetPath := resourcePath + "sheetID"
 	spreadsheetFile, err := os.Open(spreadsheetPath)
 	if err != nil {
 		log.Fatal("Unable to retrieve spreadsheet ID\n")
@@ -61,7 +67,7 @@ func MakeRequest(speedTest SpeedTest) {
 }
 
 func getClient(config *oauth2.Config) *http.Client {
-	tokFile := "./resources/token.json"
+	tokFile := resourcePath + "token.json"
 	tok, err := tokenFromFile(tokFile)
 	if err != nil {
 		tok = getTokenFromWeb(config)
