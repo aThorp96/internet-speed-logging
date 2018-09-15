@@ -11,5 +11,8 @@ Setup:
 5. Run `go install` to install the binary.
 6. Run program using `internet-speed-logging`
 
-TODO: Fix path to resources for scheduling
-
+Scheduling
+- Copy `./resources/*` to `/etc/speedlog/`
+- Copy `speedlog.timer` and `speedlog.service` to `/etc/systemd/system/`
+- Change variable `resourcePath` in `requests.go` to `/etc/speedlog/`
+- To change frequency of timer change `speedlog.timer` variable `OnCalendar` to desired frequency *See `man systemd.timer` for details*
