@@ -11,3 +11,5 @@ Setup:
 5. Run `go install` to install the binary.
 6. Run program using `internet-speed-logging`
 
+TODO: Fix path to resources for scheduling
+

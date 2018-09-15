@@ -1,5 +1,6 @@
 [Unit]
 Description=Runs speedlog.service every 2 hours
+Requires=speedlog.service
 
 [Timer]
-OnCalendar=00/2:00
+OnCalendar=00/1:00
