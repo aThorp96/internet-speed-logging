@@ -1,9 +1,8 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"os/exec"
-	//"time"
 )
 
 func main() {
@@ -13,12 +12,12 @@ func main() {
 	// Capture ouptut
 	output, err := cmd.StdoutPipe()
 	if err != nil {
-		fmt.Println(err)
+		log.Fatalf("%v", err)
 	}
 
 	err = cmd.Start()
 	if err != nil {
-		fmt.Println(err)
+		log.Fatalf("speedtest not able to run. Make sure it is installed. %v", err)
 	}
 
 	speedTest := initSpeed(output)
