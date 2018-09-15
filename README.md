@@ -15,4 +15,4 @@ Scheduling
 - Copy `./resources/*` to `/etc/speedlog/`
 - Copy `speedlog.timer` and `speedlog.service` to `/etc/systemd/system/`
 - Change variable `resourcePath` in `requests.go` to `/etc/speedlog/`
-- To change frequency of timer change `speedlog.timer` variable `OnCalendar` to desired frequency *See `man systemd.timer` for details*
+- To change frequency of timer change `speedlog.timer` variable `OnCalendar` to desired frequency **See `man systemd.timer` for details**
