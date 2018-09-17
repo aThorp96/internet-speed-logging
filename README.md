@@ -3,6 +3,9 @@
 Internet speed logger takes an your internet speed and logs the speed into a google sheet.
 For best results run with Cron or the Systemd scheduler. 
 
+Dependancies: 
+- [speedtest] (https://github.com/sivel/speedtest-cli)
+
 Setup: 
 1. Follow [Google Sheets' API setup step 1](https://developers.google.com/sheets/api/quickstart/go) and save `credentials.json` to `./resources/sheetID`. 
 2. From the source diriectory, run `echo "<spreadsheet ID>" > ./resources/credentials.json`.
